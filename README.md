@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Automated deployment links:
 
 - S3 bucket: http://store-auto-uploaded.s3-website-us-east-1.amazonaws.com/
-- Cloudfront: https://dmpgqhov2oiht.cloudfront.net/
+- Cloudfront: https://d297twukcr4eby.cloudfront.net/
 
 ## Available Scripts
 

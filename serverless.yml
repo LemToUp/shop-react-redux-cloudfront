@@ -1,4 +1,4 @@
-service: node-in-aws-web
+service: store-auto-uploaded
 
 frameworkVersion: '2'
 
@@ -17,7 +17,7 @@ plugins:
 
 custom:
   client:
-    bucketName: node-in-aws-web-bucket
+    bucketName: store-auto-uploaded # (see Configuration Parameters below)
     distributionFolder: build
   s3BucketName: ${self:custom.client.bucketName}
 

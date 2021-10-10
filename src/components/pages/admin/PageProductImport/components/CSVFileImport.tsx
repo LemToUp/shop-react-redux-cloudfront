@@ -29,25 +29,31 @@ export default function CSVFileImport({url, title}: CSVFileImportProps) {
     setFile('');
   };
 
-  const uploadFile = async (e: any) => {
-      // Get the presigned URL
-      const response = await axios({
-        method: 'GET',
-        url,
-        params: {
-          name: encodeURIComponent(file.name)
+    const uploadFile = async (e: any) => {
+            // Get the presigned URL
+            const response = await axios({
+                method: 'GET',
+                headers: {
+                    'Authorization': localStorage.getItem('authorization_token') || '',
+                },
+                url,
+                params: {
+                    name: encodeURIComponent(file.name)
+                }
+            })
+            console.log('File to upload: ', file.name)
+            console.log('Uploading to: ', response.data)
+            const result = await fetch(response.data.data, {
+                method: 'PUT',
+                body: file,
+                headers: {
+                    'Content-Type': 'text/csv',
+                }
+            })
+            console.log('Result: ', result)
+            setFile('');
         }
-      })
-      console.log('File to upload: ', file.name)
-      console.log('Uploading to: ', response.data)
-      const result = await fetch(response.data, {
-        method: 'PUT',
-        body: file
-      })
-      console.log('Result: ', result)
-      setFile('');
-    }
-  ;
+    ;
 
   return (
     <div className={classes.content}>
